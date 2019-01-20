@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons left>
+      <button *ngIf="!isOpen" ion-button icon-menu icon-only (click)="openNexus()">
+        <img src="assets/icon/menu.svg" />
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="!isOpen" class="animated bounce">
+      Menu
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="rocketui-special-thanks">
+    <div>
+      <h2>Nexus Navigation</h2>
+      <p>Suggestions or tips, please contact us. <br>Send us an email for better support</p>
+    </div>
+  </div>
+</ion-content>
+<div class="menu-nexus">
+  <div class="menu-nexus-backdrop"></div>
+  <div class="menu-nexus-wrapper"  @menuNexus (@menuNexus.done)="animEnd($event)" *ngIf="isOpen">
+    <div class="menu-nexus-content" [ngClass]="{'content-visible': isOpen}">
+        <figure class="user-picture " [ngClass]="startAnim" *ngIf="isOpen">
+            <img src="assets/imgs/user.jpg" />
+        </figure>
+        <ion-list class="menu-nexus-list" no-lines padding [ngClass]="startAnim" *ngIf="isOpen" >
+            <button ion-item>Home</button>
+            <button ion-item>My Profile</button>
+            <button ion-item>Downloads</button>
+            <button ion-item>Helpdesk</button>
+            <button ion-item>Photos</button>
+            <button ion-item>Settings</button>
+            <button ion-item>Logout</button>
+        </ion-list>
+    </div>
+  </div>
+  <button class="menu-nexus-btn-close" @menuNexusBtnClose *ngIf="isOpen" (click)="openNexus()" >
+    <ion-icon name="md-close"></ion-icon>
+  </button>
+</div>
